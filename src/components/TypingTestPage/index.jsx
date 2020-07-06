@@ -58,9 +58,21 @@ function TypingTestPage(props) {
       setStarted(false);
     }
   };
-
+  const handleReset = async () => {
+    const response = await Axios.get(
+      'https://hipsum.co/api/?type=vocabulary&sentences=3'
+    );
+    const textArray = response.data[0].split('');
+    setData(textArray);
+    setUserInput('');
+    setCount(0);
+    setSec(0);
+    setStarted(false);
+    setFinished(false);
+  };
   return (
     <div className={styles['home-page']}>
+      <p className={styles.title}>Typing speed test</p>
       <label htmlFor="userInput">
         <TextContent
           text={data}
@@ -68,7 +80,10 @@ function TypingTestPage(props) {
           countCorrectSymbols={countCorrectSymbols}
         />
       </label>
-      <InputForm onChange={handleChangeInput} />
+      <div className={styles.wrapper}>
+        <InputForm onChange={handleChangeInput} value={userInput} />
+        <button onClick={handleReset}>Reset</button>
+      </div>
       {finished && <Wpm count={count} sec={sec} />}
     </div>
   );
