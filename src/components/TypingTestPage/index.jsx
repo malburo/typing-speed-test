@@ -57,6 +57,9 @@ function TypingTestPage(props) {
       setFinished(true);
       setStarted(false);
     }
+    if (userInput.length < data.length) {
+      setFinished(false);
+    }
   };
   const handleReset = async () => {
     const response = await Axios.get(
