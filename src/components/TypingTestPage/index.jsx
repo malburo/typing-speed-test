@@ -5,6 +5,7 @@ import TextContent from '../TextContent';
 import styles from './style.module.scss';
 import Wpm from '../WPM';
 import { Container, Row, Col } from 'reactstrap';
+import Cpm from '../CPM';
 TypingTestPage.propTypes = {};
 
 function TypingTestPage(props) {
@@ -33,17 +34,19 @@ function TypingTestPage(props) {
       }, 1000);
       setStarted(true);
     }
-
     return () => clearInterval(interval);
   }, [started]);
 
   const handleChangeInput = e => {
-    if (!finished) {
+    const value = e.target.value;
+    if (value) {
       setStarted(true);
+    } else {
+      setStarted(false);
     }
-    setUserInput(e.target.value);
-    countCorrectSymbols(e.target.value);
-    handleFinished(e.target.value);
+    setUserInput(value);
+    countCorrectSymbols(value);
+    handleFinished(value);
   };
   const countCorrectSymbols = userInput => {
     const text = data.join('').split(' ').join('').split('');
@@ -53,13 +56,9 @@ function TypingTestPage(props) {
   };
 
   const handleFinished = userInput => {
-    if (userInput.length === data.length) {
-      clearInterval(userInput);
+    if (userInput.length >= data.length) {
       setFinished(true);
       setStarted(false);
-    }
-    if (userInput.length < data.length) {
-      setFinished(false);
     }
   };
   const handleReset = async () => {
@@ -95,22 +94,33 @@ function TypingTestPage(props) {
                 </label>
               </Col>
             </Row>
+            {!finished && (
+              <Row>
+                <Col>
+                  <div className={styles.input}>
+                    <InputForm onChange={handleChangeInput} value={userInput} />
+                  </div>
+                </Col>
+              </Row>
+            )}
+            {finished && (
+              <div className={styles.result}>
+                <Row className="justify-content-center">
+                  <Col md="3">
+                    <Wpm count={count} sec={sec} />
+                  </Col>
+                  <Col md="3">
+                    <Cpm count={count} sec={sec} />
+                  </Col>
+                </Row>
+              </div>
+            )}
             <Row>
               <Col>
-                <div className={styles.input}>
-                  <InputForm onChange={handleChangeInput} value={userInput} />
-                </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col md="12">
                 <div className={styles['try-again']}>
                   <button onClick={handleReset}>Try again</button>
                 </div>
               </Col>
-            </Row>
-            <Row>
-              <Col>{finished && <Wpm count={count} sec={sec} />}</Col>
             </Row>
           </Col>
         </Row>
