@@ -2,19 +2,13 @@ import React from 'react';
 
 import TypingTestPage from './components/TypingTestPage';
 import styles from './app.module.scss';
+import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className={styles.app}>
       <TypingTestPage />
-      <p className={styles.footer}>
-        Code by{' '}
-        <a
-          href="https://github.com/malburo"
-          target="_blank"
-          rel="noopener noreferrer">
-          Malburo
-        </a>
-      </p>
+      <Footer />
     </div>
   );
 }

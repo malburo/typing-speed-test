@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import InputForm from '../InputForm';
 import TextContent from '../TextContent';
 import styles from './style.module.scss';
-import Wpm from '../wpm';
+import Wpm from '../WPM';
 TypingTestPage.propTypes = {};
 
 function TypingTestPage(props) {
@@ -85,7 +85,7 @@ function TypingTestPage(props) {
       </label>
       <div className={styles.wrapper}>
         <InputForm onChange={handleChangeInput} value={userInput} />
-        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleReset}>Try again</button>
       </div>
       {finished && <Wpm count={count} sec={sec} />}
     </div>

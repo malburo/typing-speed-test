@@ -1,0 +1,21 @@
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  background: #212330;
+  font-size: 12px;
+  margin: 0;
+  p {
+    margin: 10px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #ccc;
+  }
+}
