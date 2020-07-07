@@ -4,6 +4,7 @@ import InputForm from '../InputForm';
 import TextContent from '../TextContent';
 import styles from './style.module.scss';
 import Wpm from '../WPM';
+import { Container, Row, Col } from 'reactstrap';
 TypingTestPage.propTypes = {};
 
 function TypingTestPage(props) {
@@ -74,21 +75,47 @@ function TypingTestPage(props) {
     setFinished(false);
   };
   return (
-    <div className={styles['home-page']}>
-      <p className={styles.title}>Typing speed test</p>
-      <label htmlFor="userInput">
-        <TextContent
-          text={data}
-          userInput={userInput}
-          countCorrectSymbols={countCorrectSymbols}
-        />
-      </label>
-      <div className={styles.wrapper}>
-        <InputForm onChange={handleChangeInput} value={userInput} />
-        <button onClick={handleReset}>Try again</button>
+    <Container>
+      <div className={styles['home-page']}>
+        <Row>
+          <Col>
+            <Row>
+              <Col>
+                <p className={styles.title}>Typing speed test</p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <label htmlFor="userInput" className={styles.text}>
+                  <TextContent
+                    text={data}
+                    userInput={userInput}
+                    countCorrectSymbols={countCorrectSymbols}
+                  />
+                </label>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div className={styles.input}>
+                  <InputForm onChange={handleChangeInput} value={userInput} />
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col md="12">
+                <div className={styles['try-again']}>
+                  <button onClick={handleReset}>Try again</button>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>{finished && <Wpm count={count} sec={sec} />}</Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
-      {finished && <Wpm count={count} sec={sec} />}
-    </div>
+    </Container>
   );
 }
 
