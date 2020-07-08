@@ -1,14 +1,17 @@
+@import '../../assets/styles/colors';
+
 .wrapper {
   max-width: 800px;
   min-height: 120px;
+  background-color: $dark-color-1;
+  color: $text-color;
+
   font-size: 18px;
-  line-height: 1.8;
-  cursor: text;
-  background-color: #212330;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-  padding: 30px;
-  color: #bababa;
   font-weight: 600;
+  line-height: 1.8;
+
+  padding: 30px;
+  text-align: left;
+  border-radius: 10px;
+  cursor: text;
 }

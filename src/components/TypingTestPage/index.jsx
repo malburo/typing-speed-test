@@ -1,11 +1,11 @@
-import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'reactstrap';
+import textApi from '../../api/textApi';
+import Cpm from '../CPM';
 import InputForm from '../InputForm';
 import TextContent from '../TextContent';
-import styles from './style.module.scss';
 import Wpm from '../WPM';
-import { Container, Row, Col } from 'reactstrap';
-import Cpm from '../CPM';
+import styles from './style.module.scss';
 TypingTestPage.propTypes = {};
 
 function TypingTestPage(props) {
@@ -17,9 +17,7 @@ function TypingTestPage(props) {
   const [finished, setFinished] = useState(false);
   useEffect(() => {
     async function fetchData() {
-      const response = await Axios.get(
-        'https://hipsum.co/api/?type=vocabulary&sentences=3'
-      );
+      const response = await textApi.getText();
       const textArray = response.data[0].split('');
       setData(textArray);
     }
@@ -62,9 +60,7 @@ function TypingTestPage(props) {
     }
   };
   const handleReset = async () => {
-    const response = await Axios.get(
-      'https://hipsum.co/api/?type=vocabulary&sentences=3'
-    );
+    const response = await textApi.getText();
     const textArray = response.data[0].split('');
     setData(textArray);
     setUserInput('');

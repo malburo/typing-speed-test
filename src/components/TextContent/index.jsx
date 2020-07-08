@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.module.scss';
-import Character from '../character';
+import Character from '../Character';
 TextContent.propTypes = {
   text: PropTypes.array.isRequired,
 };

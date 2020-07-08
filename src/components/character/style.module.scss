@@ -1,8 +1,9 @@
+@import '../../assets/styles/colors';
 .right {
-  background-color: rgb(144, 255, 144);
-  color: #7e7e7e;
+  background-color: $right-color;
+  color: $text-color-dark;
 }
 .wrong {
-  background-color: rgb(255, 98, 98);
-  color: white;
+  background-color: $wrong-color;
+  color: $white-color;
 }

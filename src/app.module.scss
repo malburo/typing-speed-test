@@ -1,5 +1,8 @@
+@import 'assets/styles/colors';
+
 .app {
+  position: relative;
   max-width: 100vw;
   min-height: 100vh;
-  background-color: #13141c;
+  background-color: $background-color;
 }

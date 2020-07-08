@@ -1,24 +1,28 @@
+@import '../../assets/styles/colors';
+
 .footer {
-  position: fixed;
-  height: 50px;
-  left: 0;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  color: white;
+  height: 2.5rem;
+
+  background: $dark-color-1;
+  color: $text-color;
+  font-size: 14px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #212330;
-  font-size: 14px;
+
   p {
     margin: 0;
   }
   a {
-    color: white;
+    color: $text-color;
     text-decoration: none;
   }
   a:hover {
     color: #ccc;
+    text-decoration: none;
   }
 }

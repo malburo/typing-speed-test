@@ -1,13 +1,16 @@
+@import '../../assets/styles/colors';
+
 .input {
+  background-color: $dark-color-2;
   width: 50%;
 
   padding: 14px 20px;
-  font-size: 18px;
-  background-color: #353748;
-  outline: none;
   border: none;
-  color: white;
   border-radius: 3px;
+  outline: none;
+
+  font-size: 18px;
+  color: $white-color;
 }
 .input:focus {
   border: 1px solid #888a99;
