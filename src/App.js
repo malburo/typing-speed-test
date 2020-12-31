@@ -1,4 +1,4 @@
-import TypingTestPage from "./container/MainPage";
+import TypingTestPage from "./components/MainPage";
 import styles from "./app.module.scss";
 import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";

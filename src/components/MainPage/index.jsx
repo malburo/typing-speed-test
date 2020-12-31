@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 import restart from "../../assets/img/restart.svg";
-import Cpm from "../../components/CPM";
-import InputForm from "../../components/InputForm";
-import TextContent from "../../components/TextContent";
-import Wpm from "../../components/WPM";
 import wordList from "../../data";
 import randomWord from "../../helpers/randomWord";
+import Cpm from "../CPM";
+import InputForm from "../InputForm";
+import TextContent from "../TextContent";
+import Wpm from "../Wpm";
 import styles from "./style.module.scss";
 
 function TypingTestPage() {
