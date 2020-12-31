@@ -6,7 +6,7 @@ import randomWord from "../../helpers/randomWord";
 import Cpm from "../CPM";
 import InputForm from "../InputForm";
 import TextContent from "../TextContent";
-import Wpm from "../Wpm";
+import Wpm from "../WPM";
 import styles from "./style.module.scss";
 
 function TypingTestPage() {
