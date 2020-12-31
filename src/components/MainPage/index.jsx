@@ -6,7 +6,7 @@ import randomWord from "../../helpers/randomWord";
 import Cpm from "../CPM";
 import InputForm from "../InputForm";
 import TextContent from "../TextContent";
-import Wpm from "../WPM";
+// import Wpm from "../WPM";
 import styles from "./style.module.scss";
 
 function TypingTestPage() {
@@ -104,9 +104,7 @@ function TypingTestPage() {
             {finished && (
               <div className={styles.result}>
                 <Row className="justify-content-center">
-                  <Col md="3">
-                    <Wpm count={count} sec={sec} />
-                  </Col>
+                  <Col md="3">{/* <Wpm count={count} sec={sec} /> */}</Col>
                   <Col md="3">
                     <Cpm count={count} sec={sec} />
                   </Col>
