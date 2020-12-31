@@ -1,9 +1,8 @@
-import React from 'react';
+import TypingTestPage from "./container/MainPage";
+import styles from "./app.module.scss";
+import Footer from "./components/Footer";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import TypingTestPage from './components/TypingTestPage';
-import styles from './app.module.scss';
-import Footer from './components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className={styles.app}>

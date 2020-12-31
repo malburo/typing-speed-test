@@ -1,4 +1,9 @@
-@import 'assets/styles/colors';
+@import "assets/styles/colors";
+
+body {
+  margin: 0;
+  font-family: "Roboto Mono" !important;
+}
 
 .app {
   position: relative;
