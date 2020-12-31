@@ -1,17 +1,9 @@
-@import '../../assets/styles/colors';
+@import "../../assets/styles/colors";
 
-.input {
-  background-color: $dark-color-2;
-  width: 50%;
-
-  padding: 14px 20px;
-  border: none;
-  border-radius: 3px;
-  outline: none;
-
-  font-size: 18px;
-  color: $white-color;
-}
-.input:focus {
-  border: 1px solid #888a99;
+input {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 0;
+  opacity: 0;
 }

@@ -1,41 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'reactstrap';
-import textApi from '../../api/textApi';
-import Cpm from '../CPM';
-import InputForm from '../InputForm';
-import TextContent from '../TextContent';
-import Wpm from '../WPM';
-import styles from './style.module.scss';
-TypingTestPage.propTypes = {};
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "reactstrap";
+import Cpm from "../../components/CPM";
+import InputForm from "../../components/InputForm";
+import TextContent from "../../components/TextContent";
+import Wpm from "../../components/WPM";
+import wordList from "../../data";
+import randomWord from "../../helpers/randomWord";
+import styles from "./style.module.scss";
+import restart from "../../assets/img/restart.svg";
 
-function TypingTestPage(props) {
-  const [data, setData] = useState([]);
-  const [userInput, setUserInput] = useState('');
+function TypingTestPage() {
+  const [data, setData] = useState(() => {
+    const data = randomWord(wordList);
+    return data;
+  });
+  const [userInput, setUserInput] = useState("");
   const [count, setCount] = useState(0);
   const [sec, setSec] = useState(0);
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      const response = await textApi.getText();
-      const textArray = response.data[0].split('');
-      setData(textArray);
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
     let interval;
     if (started) {
       interval = setInterval(() => {
-        setSec(prevSec => prevSec + 1);
+        setSec((prevSec) => prevSec + 1);
       }, 1000);
       setStarted(true);
     }
     return () => clearInterval(interval);
   }, [started]);
 
-  const handleChangeInput = e => {
+  const handleChangeInput = (e) => {
     const value = e.target.value;
     if (value) {
       setStarted(true);
@@ -46,24 +42,23 @@ function TypingTestPage(props) {
     countCorrectSymbols(value);
     handleFinished(value);
   };
-  const countCorrectSymbols = userInput => {
-    const text = data.join('').split(' ').join('').split('');
-    const input = userInput.split(' ').join('').split('');
+  const countCorrectSymbols = (userInput) => {
+    const text = data.join("").split(" ").join("").split("");
+    const input = userInput.split(" ").join("").split("");
     const result = input.filter((l, i) => l === text[i]).length;
     setCount(result);
   };
 
-  const handleFinished = userInput => {
+  const handleFinished = (userInput) => {
     if (userInput.length >= data.length) {
       setFinished(true);
       setStarted(false);
     }
   };
-  const handleReset = async () => {
-    const response = await textApi.getText();
-    const textArray = response.data[0].split('');
-    setData(textArray);
-    setUserInput('');
+  const handleReset = () => {
+    const newData = randomWord(wordList);
+    setData(newData);
+    setUserInput("");
     setCount(0);
     setSec(0);
     setStarted(false);
@@ -71,19 +66,19 @@ function TypingTestPage(props) {
   };
   return (
     <Container>
-      <div className={styles['home-page']}>
+      <div className={styles["home-page"]}>
         <Row>
           <Col>
             <Row>
               <Col>
-                <p className={styles.title}>Typing speed test</p>
+                <p className={styles.title}>Typing speed test 🍉</p>
               </Col>
             </Row>
             <Row>
               <Col>
                 <label htmlFor="userInput" className={styles.text}>
                   <TextContent
-                    text={data}
+                    characterList={data}
                     userInput={userInput}
                     countCorrectSymbols={countCorrectSymbols}
                   />
@@ -91,14 +86,21 @@ function TypingTestPage(props) {
               </Col>
             </Row>
             {!finished && (
-              <Row>
-                <Col>
-                  <div className={styles.input}>
-                    <InputForm onChange={handleChangeInput} value={userInput} />
-                  </div>
-                </Col>
-              </Row>
+              <InputForm onChange={handleChangeInput} value={userInput} />
             )}
+
+            <Row>
+              <Col>
+                <div className={styles["try-again"]}>
+                  <img
+                    src={restart}
+                    alt="restart"
+                    className={styles.restart}
+                    onClick={handleReset}
+                  />
+                </div>
+              </Col>
+            </Row>
             {finished && (
               <div className={styles.result}>
                 <Row className="justify-content-center">
@@ -111,13 +113,6 @@ function TypingTestPage(props) {
                 </Row>
               </div>
             )}
-            <Row>
-              <Col>
-                <div className={styles['try-again']}>
-                  <button onClick={handleReset}>Try again</button>
-                </div>
-              </Col>
-            </Row>
           </Col>
         </Row>
       </div>

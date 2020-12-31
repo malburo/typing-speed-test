@@ -1,13 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./style.module.scss";
 Cpm.propTypes = {
   count: PropTypes.number,
   sec: PropTypes.number,
 };
 
-function Cpm(props) {
-  const { count, sec } = props;
+function Cpm({ count, sec }) {
   let cpm;
   if (count && sec) {
     cpm = count / (sec / 60);

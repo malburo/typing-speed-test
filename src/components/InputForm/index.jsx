@@ -1,15 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import styles from "./style.module.scss";
 InputForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };
 
-function InputForm(props) {
-  const { onChange, value } = props;
+function InputForm({ onChange, value }) {
+  const inputEl = useRef(null);
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
   return (
     <input
+      ref={inputEl}
       type="text"
       name="userInput"
       id="userInput"

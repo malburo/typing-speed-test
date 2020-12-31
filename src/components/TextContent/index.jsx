@@ -1,21 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './style.module.scss';
-import Character from '../Character';
+import PropTypes from "prop-types";
+import React from "react";
+import styles from "./style.module.scss";
+
 TextContent.propTypes = {
-  text: PropTypes.array.isRequired,
+  characterList: PropTypes.array.isRequired,
 };
 
-function TextContent(props) {
-  const { text, userInput } = props;
+function TextContent({ characterList, userInput }) {
   return (
     <div className={styles.wrapper}>
-      {text.map((character, index) => {
-        let className;
-        if (index < userInput.length) {
-          className = character === userInput[index] ? 'right' : 'wrong';
+      {characterList.map((character, index) => {
+        if (index === userInput.length) {
+          return <span className={styles.active}>{character}</span>;
         }
-        return <Character character={character} key={index} className={className} />;
+        if (index < userInput.length) {
+          return (
+            <span
+              className={
+                character === userInput[index]
+                  ? styles.correct
+                  : styles.incorrect
+              }
+            >
+              {character}
+            </span>
+          );
+        }
+        return <span>{character}</span>;
       })}
     </div>
   );

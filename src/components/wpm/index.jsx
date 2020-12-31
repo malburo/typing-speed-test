@@ -1,13 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './style.module.scss';
+import React from "react";
+import PropTypes from "prop-types";
+import styles from "./style.module.scss";
 Wpm.propTypes = {
   count: PropTypes.number,
   sec: PropTypes.number,
 };
 
-function Wpm(props) {
-  const { count, sec } = props;
+function Wpm({ count, sec }) {
   let wpm;
   if (count && sec) {
     wpm = count / 5 / (sec / 60);
