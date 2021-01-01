@@ -11,11 +11,16 @@ function TextContent({ characterList, userInput }) {
     <div className={styles.wrapper}>
       {characterList.map((character, index) => {
         if (index === userInput.length) {
-          return <span className={styles.active}>{character}</span>;
+          return (
+            <span key={index} className={styles.active}>
+              {character}
+            </span>
+          );
         }
         if (index < userInput.length) {
           return (
             <span
+              key={index}
               className={
                 character === userInput[index]
                   ? styles.correct
@@ -26,7 +31,7 @@ function TextContent({ characterList, userInput }) {
             </span>
           );
         }
-        return <span>{character}</span>;
+        return <span key={index}>{character}</span>;
       })}
     </div>
   );
