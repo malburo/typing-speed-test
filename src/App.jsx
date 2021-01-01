@@ -1,14 +1,14 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
-import restart from "./assets/img/restart.svg";
 import styles from "./app.module.scss";
-import randomWord from "./helpers/randomWord";
-import wordList from "./db/data";
-import TextContent from "./components/TextContent";
-import InputForm from "./components/InputForm";
+import restart from "./assets/img/restart.svg";
 import Footer from "./components/Footer";
-import "bootstrap/dist/css/bootstrap.min.css";
+import InputForm from "./components/InputForm";
 import Result from "./components/Result";
+import TextContent from "./components/TextContent";
+import wordList from "./db/data";
+import randomWord from "./helpers/randomWord";
 
 function TypingTestPage() {
   const [data, setData] = useState(() => {

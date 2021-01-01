@@ -1,6 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
 import styles from "./style.module.scss";
+
 Result.propTypes = {
   count: PropTypes.number,
   sec: PropTypes.number,
@@ -14,7 +14,7 @@ function Result({ count, sec }) {
     wpm = 0;
   }
   return (
-    <div className={styles.cpm}>
+    <div className={styles.result}>
       <p>Your speed: {wpm} WPM </p>
     </div>
   );
