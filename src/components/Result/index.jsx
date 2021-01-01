@@ -15,7 +15,7 @@ function Result({ count, sec }) {
   }
   return (
     <div className={styles.result}>
-      <p>Your speed: {wpm} WPM </p>
+      <p>Your speed: {Math.round(wpm)} WPM </p>
     </div>
   );
 }
