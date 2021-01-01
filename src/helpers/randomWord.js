@@ -1,6 +1,6 @@
 const randomWord = (array) => {
   const data = [];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 10; i++) {
     const item = array[Math.floor(Math.random() * array.length)];
     data.push(item);
   }

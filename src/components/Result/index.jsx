@@ -1,21 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./style.module.scss";
-Cpm.propTypes = {
+Result.propTypes = {
   count: PropTypes.number,
   sec: PropTypes.number,
 };
 
-function Cpm({ count, sec }) {
-  let cpm;
+function Result({ count, sec }) {
+  let wpm;
   if (count && sec) {
-    cpm = count / (sec / 60);
+    wpm = count / 5 / (sec / 60);
+  } else {
+    wpm = 0;
   }
   return (
     <div className={styles.cpm}>
-      <p>{Math.round(cpm)} cpm</p>
+      <p>Your speed: {wpm} WPM </p>
     </div>
   );
 }
 
-export default Cpm;
+export default Result;
