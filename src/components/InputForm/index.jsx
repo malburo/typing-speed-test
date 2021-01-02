@@ -20,6 +20,7 @@ function InputForm({ onChange, value }) {
       onChange={onChange}
       className={styles.input}
       value={value}
+      autoComplete="off"
     />
   );
 }

@@ -71,7 +71,7 @@ function TypingTestPage() {
         <Container>
           <Row>
             <Col>
-              <p className={styles.title}>⚡ Typing speed test ⚡</p>
+              <p className={styles.title}>Typing speed test</p>
             </Col>
           </Row>
           {!finished && (
