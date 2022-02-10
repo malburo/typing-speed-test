@@ -9,7 +9,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "caniuse-lite": "^1.0.30001171",
-    "node-sass": "4.14.1",
+    "node-sass": "7.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
